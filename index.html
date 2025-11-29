@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Repositório Acadêmico</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                
+                <img
+                    src="https://www.ifsc.edu.br/image/layout_set_logo?img_id=1387322&t=1763183438496"
+                    alt="Logo IFSC"
+                    style="height:60px; margin-right:100px;">
+                <strong>Repositório Acadêmico</strong>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+                aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navMain">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#linksLeis">Leis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#documentos">Documentos</a></li>
+                </ul>
+
+                <div class="d-flex">
+                    <button class="btn btn-outline-light me-2" data-bs-toggle="modal" id="adicionarPost"
+                        data-bs-target="#modalAdd">Postar</button>
+                    <input id="searchInput" class="form-control form-control-sm" style="max-width:220px"
+                        placeholder="Pesquisar...">
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+
+    <!-- HERO -->
+    <header class="py-4 bg-white border-bottom">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div>
+                <h1 class="h4 mb-1">Repositório de documentos e leis</h1>
+                <p class="mb-0 text-muted">Guarde textos acadêmicos, links de legislação específica e compartilhe com
+                    a comunidade.</p>
+            </div>
+            <div class="desktop-only text-end">
+                <small class="text-muted">Crie um post abaixo e faça uma publicação</small>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <main class="container my-4">
+        <div class="row g-4">
+            <!-- COLUNA ESQUERDA: FORM / FILTROS -->
+            <aside class="col-lg-4">
+                <div class="form-card mb-3">
+                    <h5>Filtros rápidos</h5>
+                    <div class="mb-2">
+                        <label class="form-label">Tipo</label>
+                        <select id="filterType" class="form-select form-select-sm">
+                            <option value="all">Todos</option>
+                            <option value="documento">Documento acadêmico</option>
+                            <option value="lei">Lei / Legislação</option>
+                            <option value="link">Link externo</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Tag</label>
+                        <input id="filterTag" class="form-control form-control-sm"
+                            placeholder="ex: tributário, ambiental">
+                    </div>
+                    <div class="d-grid">
+                        <button id="applyFilters" class="btn btn-primary btn-sm">Aplicar filtros</button>
+                        <button id="clearFilters" class="btn btn-link btn-sm">Limpar</button>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm repo-card p-3">
+                    <h6 class="mb-2">Como usar</h6>
+                    <ol class="mb-0 small">
+                        <li>Clique em <strong>Adicionar post</strong>.</li>
+                        <li>Escolha título, cole o link e selecione o tipo.</li>
+                        <li>O título aparecerá acima do link.</li>
+                    </ol>
+                </div>
+            </aside>
+
+            <!-- COLUNA DIREITA: LISTA DE POSTS -->
+            <section class="col-lg-8">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="mb-0">Últimos posts</h4>
+                    <small id="countBadge" class="text-muted">0 itens</small>
+                </div>
+
+                <div id="postsList" class="row g-3">
+                    <!-- Cards gerados dinamicamente -->
+
+                </div>
+
+                <!-- SEÇÃO: links de leis -- ancorada -->
+                <hr class="my-4">
+                <h5 id="linksLeis">Leis em destaque</h5>
+                <div class="list-group mb-5" id="lawsList">
+                    <a href="https://www.planalto.gov.br/ccivil_03/leis/L8069.htm" target="_blank"
+                        class="list-group-item list-group-item-action">Estatuto da Criança e do Adolescente (ECA) — Lei
+                        nº 8.069/1990</a>
+                    <a href="https://www.planalto.gov.br/ccivil_03/leis/L8666cons.htm" target="_blank"
+                        class="list-group-item list-group-item-action">Lei de Licitações — Lei nº 8.666/1993
+                        (exemplo)</a>
+                    <a href="https://www.planalto.gov.br/ccivil_03/leis/L10406.htm" target="_blank"
+                        class="list-group-item list-group-item-action">Código Civil — Lei nº 10.406/2002</a>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- MODAL: Adicionar post (cliente-only para demonstração) -->
+    <div class="modal fade" id="modalAdd" tabindex="-1" aria-labelledby="modalAddLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAddLabel">Adicionar novo post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <form id="postForm" class="needs-validation" novalidate>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">Título</label>
+                                <input id="postTitle" class="form-control" required placeholder="Ex: Artigo sobre ICMS">
+                                <div class="invalid-feedback">O título é obrigatório.</div>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label class="form-label">Link (URL)</label>
+                                <input id="postUrl" type="url" class="form-control" placeholder="https://..." required>
+                                <div class="invalid-feedback">Cole um link válido (https://...)</div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Tipo</label>
+                                <select id="postType" class="form-select">
+                                    <option value="documento">Documento acadêmico</option>
+                                    <option value="lei">Lei</option>
+                                    <option value="link">Link externo</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Descrição / Observações</label>
+                                <textarea id="postDesc" class="form-control" rows="2"
+                                    placeholder="Resumo rápido (opcional)"></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Tags (separadas por vírgula)</label>
+                                <input id="postTags" class="form-control" placeholder="ex: tributário, monografia">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

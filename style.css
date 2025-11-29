@@ -1,0 +1,83 @@
+:root {
+    --brand: #;
+    /* verde IFSC */
+    /* azul bootstrap */
+    --card-shadow: 0 8px 24px rgba(13, 110, 253, 0.08);
+}
+
+body {
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    color: #222;
+}
+
+.navbar-brand strong {
+    letter-spacing: 0.3px
+}
+
+/* destaque dos cards */
+.repo-card {
+    border-left: 4px solid var(--brand);
+    box-shadow: var(--card-shadow);
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.repo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(13, 110, 253, 0.08)
+}
+
+/* quando marcado como lei */
+.badge-lei {
+    background: #0dcaf0;
+    color: #04243a
+}
+
+/* formulário flutuante */
+.form-card {
+    background: linear-gradient(#ffffff, #fbfdff);
+    border-radius: 12px;
+    padding: 1rem
+}
+
+/* destaque do título do post acima do link */
+.post-title {
+    font-weight: 700;
+    margin-bottom: .25rem
+}
+
+/* pequenas utilidades responsivas */
+@media (max-width:767px) {
+    .desktop-only {
+        display: none
+    }
+}
+
+.navbar {
+    background: #399736 !important;
+}
+
+.navbar .nav-link,
+.navbar-brand {
+    color: #fff !important;
+}
+
+.navbar .nav-link.active {
+    font-weight: 600;
+}
+
+#applyFilters {
+    background-color: #399736;
+}
+
+#clearFilters {
+    color: #399736;
+}
+
+#adicionarPost {
+    color: #222 !important;
+    background-color: #ffffff;
+}
+
+#span {
+    background-color: #399736 !important;
+}
